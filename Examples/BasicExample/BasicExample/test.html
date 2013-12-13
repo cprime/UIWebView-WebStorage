@@ -1,0 +1,31 @@
+<html>
+    <script>
+        function replaceLocalStorage() {
+            document.getElementById("local_storage").innerHTML = localStorage.getItem("message");
+        }
+
+        function replaceSessionStorage() {
+            document.getElementById("session_storage").innerHTML = sessionStorage.getItem("message");
+        }
+
+        function insertText() {
+            replaceLocalStorage();
+            replaceSessionStorage();
+        }
+
+        window.onload = insertText;
+    </script>
+    <body>
+        <div>
+            <p>Local Storage:</p>
+            <p id="local_storage"></p>
+        </div>
+        <br/>
+        <br/>
+        <br/>
+		<div>
+            <p>Session Storage:</p>
+            <p id="session_storage"></p>
+		</div>
+    </body>
+</html>

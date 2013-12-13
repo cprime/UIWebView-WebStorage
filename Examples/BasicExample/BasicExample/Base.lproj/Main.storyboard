@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="6ga-BX-ixo">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+    </dependencies>
+    <scenes>
+        <!--Web View Controller-->
+        <scene sceneID="N3N-l6-0f5">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nVn-xc-6UL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="WebViewController" id="uwi-We-uth" customClass="WebViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Xbs-2w-lwa"/>
+                        <viewControllerLayoutGuide type="bottom" id="JKz-vG-9Te"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kjF-rR-yOw">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NGT-RF-YRW">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="NGT-RF-YRW" secondAttribute="bottom" id="Tda-eB-eWR"/>
+                            <constraint firstItem="NGT-RF-YRW" firstAttribute="top" secondItem="kjF-rR-yOw" secondAttribute="top" id="aK2-kR-cbc"/>
+                            <constraint firstAttribute="trailing" secondItem="NGT-RF-YRW" secondAttribute="trailing" id="itO-CS-bd6"/>
+                            <constraint firstItem="NGT-RF-YRW" firstAttribute="leading" secondItem="kjF-rR-yOw" secondAttribute="leading" id="od9-4e-Hsd"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ARu-Ln-yG6"/>
+                    <connections>
+                        <outlet property="firstWebView" destination="NGT-RF-YRW" id="zjt-hK-tHG"/>
+                        <segue destination="e9y-J7-ury" kind="push" identifier="ShowSettingsSeque" id="AyL-bg-yU3"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="-95" y="153"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="4IP-pN-p6R">
+            <objects>
+                <viewController id="e9y-J7-ury" customClass="SettingsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kjl-FS-Bh8"/>
+                        <viewControllerLayoutGuide type="bottom" id="p5u-2d-2pJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="o2M-2L-x64">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Session" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lZV-nl-uul">
+                                <rect key="frame" x="20" y="111" width="226" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Local" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XGg-4H-Ji8">
+                                <rect key="frame" x="20" y="73" width="226" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8UP-hX-IVp">
+                                <rect key="frame" x="20" y="149" width="280" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="submitButtonClicked:" destination="e9y-J7-ury" eventType="touchUpInside" id="Ou3-Ty-Iu7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SSu-5c-Kyb">
+                                <rect key="frame" x="20" y="187" width="280" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Clear All">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="clearAllButtonClicked:" destination="e9y-J7-ury" eventType="touchUpInside" id="8DV-ls-iSa"/>
+                                    <action selector="submitButtonClicked:" destination="e9y-J7-ury" eventType="touchUpInside" id="d7x-aA-i7R"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8B7-9p-ecG">
+                                <rect key="frame" x="254" y="73" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Clear">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="clearLocalButtonClicked:" destination="e9y-J7-ury" eventType="touchUpInside" id="VPs-aQ-5hh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q22-WZ-JVd">
+                                <rect key="frame" x="254" y="110" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Clear">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="clearSessionButtonClicked:" destination="e9y-J7-ury" eventType="touchUpInside" id="Ykg-UJ-WL3"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="pXd-ic-WEU"/>
+                    <connections>
+                        <outlet property="localTextField" destination="XGg-4H-Ji8" id="jkw-kg-nyA"/>
+                        <outlet property="sessionTextField" destination="lZV-nl-uul" id="7Tj-kz-Ycv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gli-eg-pPL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="578" y="169"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="kzJ-ar-C4X">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="6ga-BX-ixo" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rWU-8i-KRS">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="uwi-We-uth" kind="relationship" relationship="rootViewController" id="DSl-1W-jRd"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YhE-pN-A6J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-602" y="153"/>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

@@ -5,7 +5,7 @@ UIWebView Category that adds CocoaTouch level hooks to HTML5 web storage.
 
 ### How to use:
 
-#### 1. Load any url into a UIWebView
+#### 1. Load any URL into a UIWebView.
 
 #### 2. Access that web view's SessionStorage and LocalStorage to your heart's content.
 

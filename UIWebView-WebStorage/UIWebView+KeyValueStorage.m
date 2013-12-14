@@ -8,31 +8,63 @@
 
 #import "UIWebView+KeyValueStorage.h"
 
+NSString * const kLocalStorageName = @"localStorage";
+NSString * const kSessionStorageName = @"sessionStorage";
+
 @implementation UIWebView (KeyValueStorage)
 
-- (NSString *)storageWithType:(KeyValueStorageType)type {
-    switch (type) {
-        case KeyValueStorageTypeLocal:
-            return @"localStorage";
-        case KeyValueStorageTypeSession:
-            return @"sessionStorage";
-    }
+#pragma mark - Local Storage
+
+- (void)setLocalStorageString:(NSString *)string forKey:(NSString *)key {
+    [self setString:string forKey:string type:kLocalStorageName];
 }
 
-- (void)setString:(NSString *)string forKey:(NSString *)key type:(KeyValueStorageType)type {
-    [self stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"%@.setItem(\"%@\", \"%@\");", [self storageWithType:type], key, string]];
+- (NSString *)localStorageStringForKey:(NSString *)key {
+    return [self stringForKey:key type:kLocalStorageName];
 }
 
-- (NSString *)stringForKey:(NSString *)key type:(KeyValueStorageType)type {
-    return [self stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"%@.getItem(\"%@\");", [self storageWithType:type], key]];
+- (void)removeLocalStorageStringForKey:(NSString *)key {
+    [self removeStringForKey:key type:kLocalStorageName];
 }
 
-- (void)removeStringForKey:(NSString *)key type:(KeyValueStorageType)type {
-    [self stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"%@.removeItem(\"%@\");", [self storageWithType:type], key]];
+- (void)clearLocalStorage {
+    [self clearWithType:kLocalStorageName];
 }
 
-- (void)clearWithType:(KeyValueStorageType)type {
-    [self stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"%@.clear();", [self storageWithType:type]]];
+#pragma mark - Session Storage
+
+- (void)setSessionStorageString:(NSString *)string forKey:(NSString *)key {
+    [self setString:string forKey:string type:kSessionStorageName];
+}
+
+- (NSString *)sessionStorageStringForKey:(NSString *)key {
+    return [self stringForKey:key type:kSessionStorageName];
+}
+
+- (void)removeSessionStorageStringForKey:(NSString *)key {
+    [self removeStringForKey:key type:kSessionStorageName];
+}
+
+- (void)clearSessionStorage {
+    [self clearWithType:kSessionStorageName];
+}
+
+#pragma mark - Helpers
+
+- (void)setString:(NSString *)string forKey:(NSString *)key type:(NSString *)type {
+    [self stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"%@.setItem(\"%@\", \"%@\");", type, key, string]];
+}
+
+- (NSString *)stringForKey:(NSString *)key type:(NSString *)type {
+    return [self stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"%@.getItem(\"%@\");", type, key]];
+}
+
+- (void)removeStringForKey:(NSString *)key type:(NSString *)type {
+    [self stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"%@.removeItem(\"%@\");", type, key]];
+}
+
+- (void)clearWithType:(NSString *)type {
+    [self stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"%@.clear();", type]];
 }
 
 @end

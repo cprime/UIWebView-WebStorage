@@ -8,19 +8,26 @@
 
 #import <UIKit/UIKit.h>
 
-typedef enum {
-    KeyValueStorageTypeLocal,
-    KeyValueStorageTypeSession,
-} KeyValueStorageType;
-
 @interface UIWebView (KeyValueStorage)
 
-- (void)setString:(NSString *)string forKey:(NSString *)key type:(KeyValueStorageType)type;
+#pragma mark - Local Storage
 
-- (NSString *)stringForKey:(NSString *)key type:(KeyValueStorageType)type;
+- (void)setLocalStorageString:(NSString *)string forKey:(NSString *)key;
 
-- (void)removeStringForKey:(NSString *)key type:(KeyValueStorageType)type;
+- (NSString *)localStorageStringForKey:(NSString *)key;
 
-- (void)clearWithType:(KeyValueStorageType)type;
+- (void)removeLocalStorageStringForKey:(NSString *)key;
+
+- (void)clearLocalStorage;
+
+#pragma mark - Session Storage
+
+- (void)setSessionStorageString:(NSString *)string forKey:(NSString *)key;
+
+- (NSString *)sessionStorageStringForKey:(NSString *)key;
+
+- (void)removeSessionStorageStringForKey:(NSString *)key;
+
+- (void)clearSessionStorage;
 
 @end

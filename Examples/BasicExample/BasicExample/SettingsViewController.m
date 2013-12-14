@@ -25,32 +25,32 @@
 
     self.edgesForExtendedLayout = NO;
 
-    self.localTextField.text = [self.webview stringForKey:@"message" type:KeyValueStorageTypeLocal];
-    self.sessionTextField.text = [self.webview stringForKey:@"message" type:KeyValueStorageTypeSession];
+    self.localTextField.text = [self.webview localStorageStringForKey:@"message"];
+    self.sessionTextField.text = [self.webview sessionStorageStringForKey:@"message"];
 }
 
 - (IBAction)clearLocalButtonClicked:(id)sender {
-    [self.webview removeStringForKey:@"message" type:KeyValueStorageTypeLocal];
+    [self.webview removeLocalStorageStringForKey:@"message"];
 
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)clearSessionButtonClicked:(id)sender {
-    [self.webview removeStringForKey:@"message" type:KeyValueStorageTypeSession];
+    [self.webview removeSessionStorageStringForKey:@"message"];
 
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)clearAllButtonClicked:(id)sender {
-    [self.webview clearWithType:KeyValueStorageTypeLocal];
-    [self.webview clearWithType:KeyValueStorageTypeSession];
+    [self.webview clearLocalStorage];
+    [self.webview clearSessionStorage];
 
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)submitButtonClicked:(id)sender {
-    [self.webview setString:self.localTextField.text forKey:@"message" type:KeyValueStorageTypeLocal];
-    [self.webview setString:self.sessionTextField.text forKey:@"message" type:KeyValueStorageTypeSession];
+    [self.webview setLocalStorageString:self.localTextField.text forKey:@"message"];
+    [self.webview setSessionStorageString:self.sessionTextField.text forKey:@"message"];
 
     [self.navigationController popViewControllerAnimated:YES];
 }

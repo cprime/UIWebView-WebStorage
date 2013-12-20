@@ -8,63 +8,63 @@
 
 #import "UIWebView+KeyValueStorage.h"
 
-NSString * const kLocalStorageName = @"localStorage";
-NSString * const kSessionStorageName = @"sessionStorage";
+static NSString * const kLocalStorageName = @"localStorage";
+static NSString * const kSessionStorageName = @"sessionStorage";
 
 @implementation UIWebView (KeyValueStorage)
 
 #pragma mark - Local Storage
 
 - (void)setLocalStorageString:(NSString *)string forKey:(NSString *)key {
-    [self ip_setString:string forKey:key type:kLocalStorageName];
+    [self ip_setString:string forKey:key storage:kLocalStorageName];
 }
 
 - (NSString *)localStorageStringForKey:(NSString *)key {
-    return [self ip_stringForKey:key type:kLocalStorageName];
+    return [self ip_stringForKey:key storage:kLocalStorageName];
 }
 
 - (void)removeLocalStorageStringForKey:(NSString *)key {
-    [self ip_removeStringForKey:key type:kLocalStorageName];
+    [self ip_removeStringForKey:key storage:kLocalStorageName];
 }
 
 - (void)clearLocalStorage {
-    [self ip_clearWithType:kLocalStorageName];
+    [self ip_clearWithStorage:kLocalStorageName];
 }
 
 #pragma mark - Session Storage
 
 - (void)setSessionStorageString:(NSString *)string forKey:(NSString *)key {
-    [self ip_setString:string forKey:key type:kSessionStorageName];
+    [self ip_setString:string forKey:key storage:kSessionStorageName];
 }
 
 - (NSString *)sessionStorageStringForKey:(NSString *)key {
-    return [self ip_stringForKey:key type:kSessionStorageName];
+    return [self ip_stringForKey:key storage:kSessionStorageName];
 }
 
 - (void)removeSessionStorageStringForKey:(NSString *)key {
-    [self ip_removeStringForKey:key type:kSessionStorageName];
+    [self ip_removeStringForKey:key storage:kSessionStorageName];
 }
 
 - (void)clearSessionStorage {
-    [self ip_clearWithType:kSessionStorageName];
+    [self ip_clearWithStorage:kSessionStorageName];
 }
 
 #pragma mark - Helpers
 
-- (void)ip_setString:(NSString *)string forKey:(NSString *)key type:(NSString *)type {
-    [self stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"%@.setItem('%@', '%@');", type, key, string]];
+- (void)ip_setString:(NSString *)string forKey:(NSString *)key storage:(NSString *)storage {
+    [self stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"%@.setItem('%@', '%@');", storage, key, string]];
 }
 
-- (NSString *)ip_stringForKey:(NSString *)key type:(NSString *)type {
-    return [self stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"%@.getItem('%@');", type, key]];
+- (NSString *)ip_stringForKey:(NSString *)key storage:(NSString *)storage {
+    return [self stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"%@.getItem('%@');", storage, key]];
 }
 
-- (void)ip_removeStringForKey:(NSString *)key type:(NSString *)type {
-    [self stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"%@.removeItem('%@');", type, key]];
+- (void)ip_removeStringForKey:(NSString *)key storage:(NSString *)storage {
+    [self stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"%@.removeItem('%@');", storage, key]];
 }
 
-- (void)ip_clearWithType:(NSString *)type {
-    [self stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"%@.clear();", type]];
+- (void)ip_clearWithStorage:(NSString *)storage {
+    [self stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"%@.clear();", storage]];
 }
 
 @end

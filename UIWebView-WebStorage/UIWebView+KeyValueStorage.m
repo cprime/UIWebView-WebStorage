@@ -16,54 +16,54 @@ NSString * const kSessionStorageName = @"sessionStorage";
 #pragma mark - Local Storage
 
 - (void)setLocalStorageString:(NSString *)string forKey:(NSString *)key {
-    [self setString:string forKey:string type:kLocalStorageName];
+    [self ip_setString:string forKey:key type:kLocalStorageName];
 }
 
 - (NSString *)localStorageStringForKey:(NSString *)key {
-    return [self stringForKey:key type:kLocalStorageName];
+    return [self ip_stringForKey:key type:kLocalStorageName];
 }
 
 - (void)removeLocalStorageStringForKey:(NSString *)key {
-    [self removeStringForKey:key type:kLocalStorageName];
+    [self ip_removeStringForKey:key type:kLocalStorageName];
 }
 
 - (void)clearLocalStorage {
-    [self clearWithType:kLocalStorageName];
+    [self ip_clearWithType:kLocalStorageName];
 }
 
 #pragma mark - Session Storage
 
 - (void)setSessionStorageString:(NSString *)string forKey:(NSString *)key {
-    [self setString:string forKey:string type:kSessionStorageName];
+    [self ip_setString:string forKey:key type:kSessionStorageName];
 }
 
 - (NSString *)sessionStorageStringForKey:(NSString *)key {
-    return [self stringForKey:key type:kSessionStorageName];
+    return [self ip_stringForKey:key type:kSessionStorageName];
 }
 
 - (void)removeSessionStorageStringForKey:(NSString *)key {
-    [self removeStringForKey:key type:kSessionStorageName];
+    [self ip_removeStringForKey:key type:kSessionStorageName];
 }
 
 - (void)clearSessionStorage {
-    [self clearWithType:kSessionStorageName];
+    [self ip_clearWithType:kSessionStorageName];
 }
 
 #pragma mark - Helpers
 
-- (void)setString:(NSString *)string forKey:(NSString *)key type:(NSString *)type {
+- (void)ip_setString:(NSString *)string forKey:(NSString *)key type:(NSString *)type {
     [self stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"%@.setItem(\"%@\", \"%@\");", type, key, string]];
 }
 
-- (NSString *)stringForKey:(NSString *)key type:(NSString *)type {
+- (NSString *)ip_stringForKey:(NSString *)key type:(NSString *)type {
     return [self stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"%@.getItem(\"%@\");", type, key]];
 }
 
-- (void)removeStringForKey:(NSString *)key type:(NSString *)type {
+- (void)ip_removeStringForKey:(NSString *)key type:(NSString *)type {
     [self stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"%@.removeItem(\"%@\");", type, key]];
 }
 
-- (void)clearWithType:(NSString *)type {
+- (void)ip_clearWithType:(NSString *)type {
     [self stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"%@.clear();", type]];
 }
 

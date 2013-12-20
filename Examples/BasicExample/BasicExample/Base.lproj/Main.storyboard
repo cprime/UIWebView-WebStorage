@@ -7,7 +7,6 @@
         <!--Web View Controller-->
         <scene sceneID="N3N-l6-0f5">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nVn-xc-6UL" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="WebViewController" id="uwi-We-uth" customClass="WebViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Xbs-2w-lwa"/>
@@ -36,6 +35,7 @@
                         <segue destination="e9y-J7-ury" kind="push" identifier="ShowSettingsSeque" id="AyL-bg-yU3"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nVn-xc-6UL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-95" y="153"/>
         </scene>
@@ -79,7 +79,6 @@
                                 </state>
                                 <connections>
                                     <action selector="clearAllButtonClicked:" destination="e9y-J7-ury" eventType="touchUpInside" id="8DV-ls-iSa"/>
-                                    <action selector="submitButtonClicked:" destination="e9y-J7-ury" eventType="touchUpInside" id="d7x-aA-i7R"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8B7-9p-ecG">

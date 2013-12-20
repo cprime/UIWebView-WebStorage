@@ -1,11 +1,19 @@
 <html>
     <script>
         function replaceLocalStorage() {
-            document.getElementById("local_storage").innerHTML = localStorage.getItem("message");
+            var message = localStorage.getItem("message");
+            if (message == null || message == "") {
+                message = "<i>message not set in localStorage</i>";
+            }
+            document.getElementById("local_storage").innerHTML = message;
         }
 
         function replaceSessionStorage() {
-            document.getElementById("session_storage").innerHTML = sessionStorage.getItem("message");
+            var message = sessionStorage.getItem("message");
+            if (message == null || message == "") {
+                message = "<i>message not set in sessionStorage</i>";
+            }
+            document.getElementById("session_storage").innerHTML = message;
         }
 
         function insertText() {
@@ -17,14 +25,16 @@
     </script>
     <body>
         <div>
-            <p>Local Storage:</p>
+            <h3>Showing values for the key 'message' in Javascript's localStorage and sessionStorage. Tap on Settings to changes these values.</h3>
+        </div>
+        <div>
+            <h3>localStorage:</h3>
             <p id="local_storage"></p>
         </div>
         <br/>
         <br/>
-        <br/>
 		<div>
-            <p>Session Storage:</p>
+            <h3>sessionStorage:</h3>
             <p id="session_storage"></p>
 		</div>
     </body>

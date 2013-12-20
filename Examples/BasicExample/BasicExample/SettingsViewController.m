@@ -31,14 +31,12 @@
 
 - (IBAction)clearLocalButtonClicked:(id)sender {
     [self.webview removeLocalStorageStringForKey:@"message"];
-
-    [self.navigationController popViewControllerAnimated:YES];
+    self.localTextField.text = @"";
 }
 
 - (IBAction)clearSessionButtonClicked:(id)sender {
     [self.webview removeSessionStorageStringForKey:@"message"];
-
-    [self.navigationController popViewControllerAnimated:YES];
+    self.sessionTextField.text = @"";
 }
 
 - (IBAction)clearAllButtonClicked:(id)sender {

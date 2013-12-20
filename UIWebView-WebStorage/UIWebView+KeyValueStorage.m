@@ -52,15 +52,15 @@ NSString * const kSessionStorageName = @"sessionStorage";
 #pragma mark - Helpers
 
 - (void)ip_setString:(NSString *)string forKey:(NSString *)key type:(NSString *)type {
-    [self stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"%@.setItem(\"%@\", \"%@\");", type, key, string]];
+    [self stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"%@.setItem('%@', '%@');", type, key, string]];
 }
 
 - (NSString *)ip_stringForKey:(NSString *)key type:(NSString *)type {
-    return [self stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"%@.getItem(\"%@\");", type, key]];
+    return [self stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"%@.getItem('%@');", type, key]];
 }
 
 - (void)ip_removeStringForKey:(NSString *)key type:(NSString *)type {
-    [self stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"%@.removeItem(\"%@\");", type, key]];
+    [self stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"%@.removeItem('%@');", type, key]];
 }
 
 - (void)ip_clearWithType:(NSString *)type {
